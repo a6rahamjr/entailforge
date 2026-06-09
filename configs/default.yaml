@@ -1,0 +1,36 @@
+project:
+  name: EntailForge
+  artifact_dir: artifacts
+  data_dir: data/processed
+
+seed: 42
+
+data:
+  train_size: 1200
+  validation_size: 240
+  test_size: 240
+  max_length: 64
+  min_token_frequency: 1
+  include_distractors: true
+
+model:
+  embedding_dim: 64
+  hidden_dim: 128
+  num_heads: 4
+  num_layers: 2
+  dropout: 0.15
+  num_classes: 2
+
+training:
+  epochs: 20
+  batch_size: 64
+  learning_rate: 0.001
+  weight_decay: 0.01
+  label_smoothing: 0.05
+  gradient_clip_norm: 1.0
+  early_stopping_patience: 4
+  num_workers: 0
+
+api:
+  host: 0.0.0.0
+  port: 8000

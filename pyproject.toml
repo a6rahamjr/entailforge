@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "entailforge"
+version = "0.1.0"
+description = "Offline training and serving for compact logical entailment models"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+  {name = "a6rahamjr"}
+]
+dependencies = [
+  "torch>=2.2,<3",
+  "numpy>=1.26,<3",
+  "PyYAML>=6.0,<7",
+  "fastapi>=0.115,<1",
+  "uvicorn>=0.30,<1",
+  "pydantic>=2.8,<3"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0,<9",
+  "httpx>=0.27,<1"
+]
+
+[project.scripts]
+entailforge = "entailforge.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q -p no:anyio -p no:cacheprovider"
